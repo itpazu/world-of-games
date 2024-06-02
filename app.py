@@ -1,7 +1,9 @@
-from utils import get_valid_num_input, get_valid_num_within_range, AVAILABLE_GAMES, DIFFICULTY_RANGE
+from utils import get_valid_num_input, get_valid_num_within_range, AVAILABLE_GAMES, DIFFICULTY_RANGE, \
+    clean_screen
 from guess_game import play as play_guess
 from currency_roulette import play as play_roulette
 from memory_game import play as play_memory
+from time import sleep
 
 
 def get_game_by_id(game_id):
@@ -35,9 +37,10 @@ def welcome():
 def start_play():
     print('please choose a game to play: \n')
     for game in AVAILABLE_GAMES:
-        print(f'{game.get("id")}: {game.get("name", "not available")}')
-        print(f'game description: \n {game.get("description", "not available")}')
-
+        print(f'''
+        {game.get("id")}: {game.get("name")}
+        game description: 
+        {game.get("description")}''')
     # getting a valid number from user
     game_number = get_valid_num_input(input("\n enter a game number: "))
     # checking that game is in range of existing games
@@ -46,11 +49,22 @@ def start_play():
     print("great! now let's pick difficulty level \n")
     difficulty_level = get_valid_num_within_range(DIFFICULTY_RANGE)
     print(f'\n you chose to play {game_choice[0].get("name")} at a difficulty level {difficulty_level} \n')
+    sleep(2)
+    clean_screen()
     result = switch_game(int(game_number), difficulty_level)
     # printing the user choice
     if result:
         print('\n you got it right!!')
-        return result
+        # return result1
+    else:
+        print(''' you were wrong :( 
+                \n would you like to keep playing? ... you know you do ;)
+        ''')
+    should_continue = int(get_valid_num_input(input('type 1 to continue, 0 to exit: '),
+                                          'please type 1 to continue, 0 to exit '))
+    if should_continue:
+        clean_screen()
+        sleep(2)
+        start_play()
+    return
 
-    print('you were wrong :(')
-    return result

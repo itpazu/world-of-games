@@ -1,6 +1,6 @@
 import re
 import random
-
+import os
 AVAILABLE_GAMES = [
     {
         "id": 1,
@@ -22,12 +22,19 @@ AVAILABLE_GAMES = [
 
 DIFFICULTY_RANGE = 5
 
+SCORES_FILE_NAME = 'Score.txt'
+BAD_RETURN_CODE = 500
 
-def get_valid_num_input(user_input):
+DEFAULT_INVALID_NUMBER_MESSAGE = "\n please enter a valid number: "
+def clean_screen():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+def get_valid_num_input(user_input, invalid_message = DEFAULT_INVALID_NUMBER_MESSAGE):
     regex = r"^[0-9]+$"
     is_valid_input = bool(re.match(regex, user_input))
     while not is_valid_input:
-        user_input = input("\n please enter a valid number: ")
+        user_input = input(invalid_message)
         is_valid_input = bool(re.match(regex, user_input))
     return user_input
 

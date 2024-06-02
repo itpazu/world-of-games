@@ -1,5 +1,4 @@
-from utils import generate_number, get_valid_num_input
-import os
+from utils import generate_number, get_valid_num_input, clean_screen
 from time import sleep
 
 
@@ -25,7 +24,7 @@ def play(difficulty):
     sleep(2)
     print(", ".join([str(i) for i in sequence]))
     sleep(0.7)
-    os.system('cls' if os.name == 'nt' else 'clear')
+    clean_screen()
     print(f'\n now insert the {difficulty} numbers as you remember: ')
     user_guess = get_list_from_user(difficulty)
     print(f'\n your numbers are: {user_guess}, the numbers you saw were: {sequence}')
