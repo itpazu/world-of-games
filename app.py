@@ -4,13 +4,14 @@ from guess_game import play as play_guess
 from currency_roulette import play as play_roulette
 from memory_game import play as play_memory
 from time import sleep
+from score import add_score
 
 
 def get_game_by_id(game_id):
     is_valid_id = False
     res = None
     while not is_valid_id:
-        res = list(filter(lambda x: x.get("id") == int(game_id), AVAILABLE_GAMES))
+        res = list(filter(lambda x: x.get("id") == game_id, AVAILABLE_GAMES))
         if len(res) > 0:
             is_valid_id = True
         else:
@@ -51,17 +52,17 @@ def start_play():
     print(f'\n you chose to play {game_choice[0].get("name")} at a difficulty level {difficulty_level} \n')
     sleep(2)
     clean_screen()
-    result = switch_game(int(game_number), difficulty_level)
+    result = switch_game(game_number, difficulty_level)
     # printing the user choice
     if result:
         print('\n you got it right!!')
-        # return result1
+        add_score(game_number, difficulty_level)
     else:
         print(''' you were wrong :( 
                 \n would you like to keep playing? ... you know you do ;)
         ''')
-    should_continue = int(get_valid_num_input(input('type 1 to continue, 0 to exit: '),
-                                          'please type 1 to continue, 0 to exit '))
+    should_continue = get_valid_num_input(input('type 1 to continue, 0 to exit: '),
+                                          'please type 1 to continue, 0 to exit ')
     if should_continue:
         clean_screen()
         sleep(2)

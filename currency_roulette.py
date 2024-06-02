@@ -12,7 +12,8 @@ def get_money_interval(difficulty, rnd_num):
 
 
 def get_guess_from_user(generated_num):
-    return get_valid_num_input(input(f'Now you need to guess the ILS value of ${generated_num}. \n insert your guess: '))
+    return get_valid_num_input(input(f'''Now you need to guess the ILS value of ${generated_num}.
+     insert your guess: '''))
 
 
 def compare_results(user_guess, min_interval, max_interval):
@@ -26,4 +27,4 @@ def play(difficulty):
     print(f'\n as of today, the ILS value of ${rnd_num} is {round(ils_num, 2)} '
           f'your wining range was {round(min_good_guess, 2)}-{round(max_good_guess,2)} '
           f'you guessed {user_guess} .....  \n')
-    return compare_results(int(user_guess), min_good_guess, max_good_guess)
+    return compare_results(user_guess, min_good_guess, max_good_guess)

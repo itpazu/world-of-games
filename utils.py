@@ -1,6 +1,9 @@
 import re
 import random
 import os
+from enum import Enum
+
+Games = Enum('Games', ['Memory Game', 'Guess Game', 'Currency Roulette'])
 AVAILABLE_GAMES = [
     {
         "id": 1,
@@ -30,13 +33,13 @@ def clean_screen():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
-def get_valid_num_input(user_input, invalid_message = DEFAULT_INVALID_NUMBER_MESSAGE):
+def get_valid_num_input(user_input, invalid_message=DEFAULT_INVALID_NUMBER_MESSAGE):
     regex = r"^[0-9]+$"
     is_valid_input = bool(re.match(regex, user_input))
     while not is_valid_input:
         user_input = input(invalid_message)
         is_valid_input = bool(re.match(regex, user_input))
-    return user_input
+    return int(user_input)
 
 
 def get_valid_num_within_range(mx_rng, min_rng=1):
@@ -44,9 +47,9 @@ def get_valid_num_within_range(mx_rng, min_rng=1):
     level = None
     while not is_valid:
         level = get_valid_num_input(input(f'please choose a number between {min_rng}-{mx_rng}: \n'))
-        if min_rng <= int(level) <= mx_rng:
+        if min_rng <= level <= mx_rng:
             is_valid = True
-    return int(level)
+    return level
 
 
 def generate_number(rng, min_rng=0):
