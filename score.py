@@ -4,7 +4,6 @@ import re
 from utils import Games
 
 
-
 def points_of_winning(difficulty):
     return difficulty * 3 + 5
 
@@ -45,4 +44,5 @@ def add_score(game, difficulty):
     current_scores = get_current_score_for_game(game, scores)
     new_score = replace_score_in_line(current_scores, difficulty)
     scores.append(new_score)
+    scores.sort()
     write_scores_to_file(scores)
