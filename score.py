@@ -46,8 +46,3 @@ def add_score(game, difficulty):
     new_score = replace_score_in_line(current_scores, difficulty)
     scores.append(new_score)
     write_scores_to_file(scores)
-    calc_total_score(scores)
-    return calc_total_score(scores)
-
-
-print(add_score(2, 5))

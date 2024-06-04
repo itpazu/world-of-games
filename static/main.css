@@ -1,0 +1,53 @@
+body {
+    background: url('/static/best-open-world-games.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section > div {
+     background-color: #8D68F4;
+     text-align: center;
+     height: 350px;
+     width: 350px;
+     padding: 10px 150px;
+     border: 2px black solid;
+}
+
+ul, li {
+    list-style-type: none;
+     margin: 0;
+     padding: 0;
+     font-size: 1.5rem;
+}
+
+li {
+    text-align: justify;
+    padding: 10px;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: white;
+}
+
+h2 > span {
+    text-decoration: underline;
+}
+
+body > h1 {
+    text-align: center;
+    color: crimson;
+    font-size: 80px;
+}
