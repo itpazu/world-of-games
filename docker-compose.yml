@@ -7,4 +7,4 @@ services:
       - 5000:5000
     volumes:
       - ./:/app
-    command: python e2e/e2e/py
+    command: python e2e/e2e.py
