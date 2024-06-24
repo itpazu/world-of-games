@@ -1,10 +1,9 @@
 pipeline {
     agent any
-
     stages {
-        stage('run git repo') {
+        stage('run wog on docker') {
             steps {
-                sh 'ls -a'
+
             }
         }
     }

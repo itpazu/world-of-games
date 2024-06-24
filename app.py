@@ -1,8 +1,8 @@
 from utils import get_valid_num_input, get_valid_num_within_range, AVAILABLE_GAMES, DIFFICULTY_RANGE, \
     clean_screen
-from guess_game import play as play_guess
-from currency_roulette import play as play_roulette
-from memory_game import play as play_memory
+from games.guess_game import play as play_guess
+from games.currency_roulette import play as play_roulette
+from games.memory_game import play as play_memory
 from time import sleep
 from score import add_score
 

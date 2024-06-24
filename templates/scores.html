@@ -7,7 +7,7 @@
             <h1> Your Scores </h1>
             <ul>
                 {% for score in scores %}
-                <li> {{ score[0] }} : {{ score[1] }} </li>
+                <li> {{ score[0] }} : <span>{{ score[1] }}</span> </li>
                 {% endfor %}
             </ul>
 
