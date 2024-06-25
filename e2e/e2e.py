@@ -4,11 +4,16 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
 
-driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-
+chrome_options = Options()
+chrome_options.add_argument("--headless=new")
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument("--disable-setuid-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
 def test_scores_service():
-    driver.get('http://www.localhost:5000/')
+    driver.get('http://wog-app:5000')
     scores_elements = driver.find_elements(By.CSS_SELECTOR, 'body > section > div > ul > li > span')
     total_score = driver.find_element(By.CSS_SELECTOR, 'body > section > div > h2 > span')
     scores_elements.append(total_score)

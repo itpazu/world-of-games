@@ -1,10 +1,21 @@
-version: "3.7"
+version: "3.8"
 services:
-  wog:
+  wog-app:
     image: itpazu/wog
     build: .
     ports:
-      - 5000:5000
+      - 8777:5000
     volumes:
       - ./:/app
-    command: python e2e/e2e.py
+    command: python3 main_score.py
+
+  selenium-tests:
+      container_name: wog-selenium
+      build:
+        context: .
+        dockerfile: e2e/Dockerfile
+      depends_on:
+        - wog-app
+      volumes:
+        - ./:/app
+      command: python3 e2e/e2e.py
